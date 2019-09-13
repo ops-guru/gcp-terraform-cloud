@@ -1,0 +1,4 @@
+.idea/
+.terraform/
+common.tfvars
+tfe-init.tfvars
