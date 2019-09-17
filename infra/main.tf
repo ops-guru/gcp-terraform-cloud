@@ -39,3 +39,27 @@ module "host-vpc-project" {
   ]
   default_service_account = "keep"
 }
+
+module "vpc1" {
+  source            = "git@github.com:ops-guru/terraform-google-network.git?ref=1cdd791960b42308d8bb1bea0b40aa2fc1badb90"
+  project_id        = module.host-vpc-project.project_id
+  network_name      = "vpc-${var.environment}"
+  routing_mode      = "GLOBAL"
+  shared_vpc_host   = "true"
+  subnets           = var.subnets
+  secondary_ranges  = var.secondary_ranges
+}
+
+resource "google_compute_router" "router" {
+  name    = "cloud-nat-router-${var.environment}"
+  network = module.vpc1.network_self_link
+  project = module.host-vpc-project.project_id
+  region  = var.cloud_nat_region
+}
+
+module "cloud-nat" {
+  source     = "git@github.com:ops-guru/terraform-google-cloud-nat.git?ref=81aa147d1f493ec8394a66537726a4b648d5d460"
+  project_id = module.host-vpc-project.project_id
+  region     = var.cloud_nat_region
+  router     = google_compute_router.router.name
+}
