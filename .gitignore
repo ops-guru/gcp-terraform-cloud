@@ -1,4 +1,3 @@
 .idea/
 .terraform/
-common.tfvars
-tfe-init.tfvars
+credentials.json
