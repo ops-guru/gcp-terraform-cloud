@@ -1,4 +1,7 @@
 - name: infra-dev
-  #vcs_repo:
-  #  identifier: "ops-guru/gcp-terraform-cloud"
-  #  ingress-submodules: true
+- name: infra-stg
+  vcs_repo:
+    identifier: "ops-guru/gcp-terraform-cloud"
+    ingress-submodules: true
+    branch: "master"
+  working_directory: "infra"
