@@ -1,7 +1,11 @@
+locals {
+  org_id = var.org_id
+}
+
 resource "google_folder" "org" {
   count = var.parent_folder == "" ? 1 : 0
   display_name = upper(var.environment)
-  parent = "organizations/${var.org_id}"
+  parent = "organizations/${local.org_id}"
 }
 
 resource "google_folder" "folder" {
