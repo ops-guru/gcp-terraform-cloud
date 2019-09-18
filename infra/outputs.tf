@@ -1,6 +1,11 @@
 output "host_project_id" {
-  description = "Project ID"
-  value       = module.host-vpc-project.project_id
+  description = "Host project ID"
+  value = module.host-vpc-project.project_id
+}
+
+output "service_project_id" {
+  description = "Service projec ID"
+  value = module.service-project.project_id
 }
 
 output "network_self_link" {
