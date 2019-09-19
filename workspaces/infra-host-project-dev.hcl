@@ -1,7 +1,6 @@
-workspace = "infra-stg"
+workspace = "infra-host-project-dev"
 credentials = "../credentials.json"
-environment = "stg"
-parent_folder = 331329180875
+environment = "dev"
 
 subnets = [
   {

@@ -1,7 +1,27 @@
-- name: infra-dev
-- name: infra-stg
+- name: infra-host-project-dev
+- name: infra-host-project-stg
   vcs_repo:
     identifier: "ops-guru/gcp-terraform-cloud"
     ingress-submodules: true
     branch: "master"
-  working_directory: "infra"
+  working_directory: "infra-host-project"
+- name: infra-host-project-prd
+  vcs_repo:
+    identifier: "ops-guru/gcp-terraform-cloud"
+    ingress-submodules: true
+    branch: "master"
+  working_directory: "infra-host-project"
+
+- name: infra-service-project-dev
+- name: infra-service-project-stg
+  vcs_repo:
+    identifier: "ops-guru/gcp-terraform-cloud"
+    ingress-submodules: true
+    branch: "master"
+  working_directory: "infra-service-project"
+- name: infra-service-project-prd
+  vcs_repo:
+    identifier: "ops-guru/gcp-terraform-cloud"
+    ingress-submodules: true
+    branch: "master"
+  working_directory: "infra-service-project"
