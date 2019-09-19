@@ -1,7 +1,6 @@
-workspace = "infra-dev"
+workspace = "infra-host-project-prd"
 credentials = "../credentials.json"
-environment = "dev"
-parent_folder = 331329180875
+environment = "prd"
 
 subnets = [
   {

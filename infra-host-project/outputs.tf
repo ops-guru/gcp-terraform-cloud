@@ -1,11 +1,11 @@
-output "host_project_id" {
+output "project_id" {
   description = "Host project ID"
   value = module.host-vpc-project.project_id
 }
 
-output "service_project_id" {
-  description = "Service projec ID"
-  value = module.service-project.project_id
+output "folder_id" {
+  description = "Environment folder id"
+  value = var.parent_folder == "" ? google_folder.org[0].id : google_folder.folder[0].id
 }
 
 output "network_self_link" {

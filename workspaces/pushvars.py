@@ -140,3 +140,4 @@ if __name__ == '__main__':
                 continue
             print('Setting {}'.format(key))
             set_variable(key, value, current_variables, workspace_id, token)
+        set_variable('terraform_organization', org, current_variables, workspace_id, token)

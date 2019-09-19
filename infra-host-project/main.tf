@@ -1,11 +1,7 @@
-locals {
-  org_id = var.org_id
-}
-
 resource "google_folder" "org" {
   count = var.parent_folder == "" ? 1 : 0
   display_name = upper(var.environment)
-  parent = "organizations/${local.org_id}"
+  parent = "organizations/${var.org_id}"
 }
 
 resource "google_folder" "folder" {
@@ -66,37 +62,4 @@ module "cloud-nat" {
   project_id = module.host-vpc-project.project_id
   region     = var.cloud_nat_region
   router     = google_compute_router.router.name
-}
-
-module "service-project" {
-  source            = "git@github.com:ops-guru/terraform-google-project-factory.git?ref=8837b4b6d825be74b1351165671a9e88202af0cd"
-  name              = "service-project-${var.environment}"
-  random_project_id = true
-  org_id            = var.org_id
-  billing_account   = var.billing_account_id
-  folder_id         = var.parent_folder == "" ? google_folder.org[0].id : google_folder.folder[0].id
-  credentials_path  = local_file.creds.filename
-  shared_vpc        = module.host-vpc-project.project_id
-  default_service_account = "keep"
-
-  shared_vpc_subnets = [
-    "projects/${module.host-vpc-project.project_id}/regions/${module.vpc1.subnets_regions[0]}/subnetworks/${module.vpc1.subnets_names[0]}",
-    "projects/${module.host-vpc-project.project_id}/regions/${module.vpc1.subnets_regions[1]}/subnetworks/${module.vpc1.subnets_names[1]}",
-    "projects/${module.host-vpc-project.project_id}/regions/${module.vpc1.subnets_regions[2]}/subnetworks/${module.vpc1.subnets_names[2]}",
-  ]
-
-  activate_apis = [
-    "appengine.googleapis.com",
-    "cloudapis.googleapis.com",
-    "cloudresourcemanager.googleapis.com",
-    "compute.googleapis.com",
-    "iam.googleapis.com",
-    "serviceusage.googleapis.com",
-    "storage-api.googleapis.com",
-    "storage-component.googleapis.com",
-    "container.googleapis.com",
-    "sqladmin.googleapis.com",
-    "sourcerepo.googleapis.com",
-    "servicenetworking.googleapis.com",
-  ]
 }
