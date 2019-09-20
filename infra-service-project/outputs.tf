@@ -5,5 +5,5 @@ output "project_id" {
 
 output "service-accounts" {
   description = "List of service account emails"
-  value = google_service_account.accounts.*.email
+  value = local.formatted_output_sa
 }
