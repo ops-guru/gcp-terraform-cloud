@@ -46,6 +46,7 @@ def create_workspace(name, org, token, working_directory='', oauth_token_id=None
             "attributes": {
                 "name": name,
                 "working-directory": working_directory,
+                "queue-all-runs": True,
                 "vcs-repo": vcs_repo
             },
             "type": "workspaces"
