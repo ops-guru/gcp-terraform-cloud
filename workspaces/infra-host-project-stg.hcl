@@ -1,6 +1,6 @@
 workspace = "infra-host-project-stg"
 credentials = "../credentials.json"
-environment = "prd"
+environment = "stg"
 
 subnets = [
   {
