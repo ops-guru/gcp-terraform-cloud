@@ -35,3 +35,10 @@ module "service-project" {
     "servicenetworking.googleapis.com",
   ]
 }
+
+resource "google_service_account" "accounts" {
+  count = length(var.service_accounts)
+  project = module.service-project.project_id
+  account_id = "${var.service_accounts[count.index]}-${var.environment}"
+  display_name = "${var.service_accounts[count.index]} for ${var.environment} environment"
+}

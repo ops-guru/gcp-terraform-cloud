@@ -17,3 +17,16 @@ variable "billing_account_id" {
 variable "terraform_organization" {
   description = "Terraform Organization that holds all workspaces"
 }
+
+variable "service_accounts" {
+  description = "List of service accounts to create"
+  type = list(string)
+  default = [
+    "kafka",
+    "rabbitmq",
+    "gke-cluster",
+    "gke-bastion",
+    "terraform",
+    "mysql",
+  ]
+}
