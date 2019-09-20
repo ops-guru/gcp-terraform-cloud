@@ -35,3 +35,18 @@ module "service-project" {
     "servicenetworking.googleapis.com",
   ]
 }
+
+resource "google_service_account" "accounts" {
+  count = length(var.service_accounts)
+  project = module.service-project.project_id
+  account_id = "${var.service_accounts[count.index]}-${var.environment}"
+  display_name = "${var.service_accounts[count.index]} for ${var.environment} environment"
+}
+
+locals {
+  formatted_output_sa = {for sa in var.service_accounts : sa =>
+    [
+      for sa_email in google_service_account.accounts.*.email : sa_email if length(regexall(sa, sa_email)) > 0
+    ][0]
+  }
+}
