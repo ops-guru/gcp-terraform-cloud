@@ -138,6 +138,6 @@ if __name__ == '__main__':
         for key, value in variables.items():
             if key == 'workspace':
                 continue
-            print('Setting {}'.format(key))
+            print('Setting {} in {}'.format(key, workspace))
             set_variable(key, value, current_variables, workspace_id, token)
         set_variable('terraform_organization', org, current_variables, workspace_id, token)

@@ -1,0 +1,4 @@
+organization = "Your terraform cloud org"
+workspaces {
+  name = "desired workspace"
+}
