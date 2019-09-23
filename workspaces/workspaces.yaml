@@ -25,3 +25,17 @@
     ingress-submodules: true
     branch: "master"
   working_directory: "infra-service-project"
+
+- name: security-dev
+- name: security-stg
+  vcs_repo:
+    identifier: "ops-guru/gcp-terraform-cloud"
+    ingress-submodules: true
+    branch: "master"
+  working_directory: "security"
+- name: security-prd
+  vcs_repo:
+    identifier: "ops-guru/gcp-terraform-cloud"
+    ingress-submodules: true
+    branch: "master"
+  working_directory: "security"
