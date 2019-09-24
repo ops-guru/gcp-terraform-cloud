@@ -1,8 +1,8 @@
 module "gke" {
-  source = "../modules/gke"
+  source = "git@github.com:ops-guru/gcp-terraform-cloud.git//modules/gke?ref=application"
   name = "application-cluster-${var.environment}"
   project_id = data.terraform_remote_state.infra-service-project.outputs.project_id
-  network = data.terraform_remote_state.infra-host-project.outputs.network_name
+  network = data.terraform_remote_state.infra-host-project.outputs.network_self_link
   service_account = data.terraform_remote_state.infra-service-project.outputs.service-accounts.gke-cluster
   ip_range_pods = "pods"
   ip_range_services = "services"
