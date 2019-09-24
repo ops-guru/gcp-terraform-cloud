@@ -113,3 +113,7 @@ output "vertical_pod_autoscaling_enabled" {
   description = "Whether veritical pod autoscaling is enabled"
   value       = module.gke.vertical_pod_autoscaling_enabled
 }
+
+output "gke_bastion_self_link" {
+  value = module.gke-bastion.instance_self_link
+}

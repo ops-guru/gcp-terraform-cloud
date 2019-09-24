@@ -16,3 +16,13 @@ module "gke" {
     }]
   }]
 }
+
+module "gke-bastion" {
+  source = "git@github.com:ops-guru/gcp-terraform-cloud.git//modules/gke-bastion?ref=application"
+  name = "gke-bastion-${var.environment}"
+  project_id = data.terraform_remote_state.infra-service-project.outputs.project_id
+  zone = "${var.region}-b"
+  service_account = data.terraform_remote_state.infra-service-project.outputs.service-accounts.gke-bastion
+  subnetwork = data.terraform_remote_state.infra-host-project.outputs.subnets_self_links[0]
+  iap_members = var.iap_members
+}
