@@ -1,55 +1,59 @@
 - name: infra-host-project-dev
 - name: infra-host-project-stg
-  vcs_repo:
+  vcs-repo:
     identifier: "ops-guru/gcp-terraform-cloud"
     ingress-submodules: true
     branch: "master"
-  working_directory: "infra-host-project"
+  working-directory: "infra-host-project"
 - name: infra-host-project-prd
-  vcs_repo:
+  vcs-repo:
     identifier: "ops-guru/gcp-terraform-cloud"
     ingress-submodules: true
     branch: "master"
-  working_directory: "infra-host-project"
+  working-directory: "infra-host-project"
 
 - name: infra-service-project-dev
 - name: infra-service-project-stg
-  vcs_repo:
+  vcs-repo:
     identifier: "ops-guru/gcp-terraform-cloud"
     ingress-submodules: true
     branch: "master"
-  working_directory: "infra-service-project"
+  working-directory: "infra-service-project"
 - name: infra-service-project-prd
-  vcs_repo:
+  vcs-repo:
     identifier: "ops-guru/gcp-terraform-cloud"
     ingress-submodules: true
     branch: "master"
-  working_directory: "infra-service-project"
+  working-directory: "infra-service-project"
 
 - name: security-dev
 - name: security-stg
-  vcs_repo:
+  vcs-repo:
     identifier: "ops-guru/gcp-terraform-cloud"
     ingress-submodules: true
     branch: "master"
-  working_directory: "security"
+  working-directory: "security"
 - name: security-prd
-  vcs_repo:
+  vcs-repo:
     identifier: "ops-guru/gcp-terraform-cloud"
     ingress-submodules: true
     branch: "master"
-  working_directory: "security"
+  working-directory: "security"
 
 - name: application-dev
+  working-directory: "application"
+  trigger-prefixes:
+    - "modules/gke"
+    - "modules/gke-bastion"
 - name: application-stg
-  vcs_repo:
+  vcs-repo:
     identifier: "ops-guru/gcp-terraform-cloud"
     ingress-submodules: true
     branch: "master"
-  working_directory: "application"
+  working-directory: "application"
 - name: application-prd
-  vcs_repo:
+  vcs-repo:
     identifier: "ops-guru/gcp-terraform-cloud"
     ingress-submodules: true
     branch: "master"
-  working_directory: "application"
+  working-directory: "application"
