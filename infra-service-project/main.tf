@@ -33,6 +33,7 @@ module "service-project" {
     "sqladmin.googleapis.com",
     "sourcerepo.googleapis.com",
     "servicenetworking.googleapis.com",
+    "iap.googleapis.com",
   ]
 }
 
