@@ -1,5 +1,5 @@
 module "gke" {
-  source = "git@github.com:ops-guru/gcp-terraform-cloud.git//modules/gke?ref=application"
+  source = "../modules/gke"
   name = "application-cluster-${var.environment}"
   project_id = data.terraform_remote_state.infra-service-project.outputs.project_id
   network = data.terraform_remote_state.infra-host-project.outputs.network_self_link
@@ -18,7 +18,7 @@ module "gke" {
 }
 
 module "gke-bastion" {
-  source = "git@github.com:ops-guru/gcp-terraform-cloud.git//modules/gke-bastion?ref=application"
+  source = "../modules/gke-bastion"
   name = "gke-bastion-${var.environment}"
   project_id = data.terraform_remote_state.infra-service-project.outputs.project_id
   zone = "${var.region}-b"
