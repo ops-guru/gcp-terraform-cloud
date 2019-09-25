@@ -39,3 +39,5 @@
     ingress-submodules: true
     branch: "master"
   working_directory: "security"
+
+- name: application-dev
