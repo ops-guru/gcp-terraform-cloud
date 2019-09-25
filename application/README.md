@@ -1,7 +1,6 @@
 # Preconditions
 1. Workspace created
 1. Variables set in the workspace
-1. Add through UI `org_id` and `billing_account_id` to workspace variables
 
 # How to do local development
 1. copy `backend.hcl.example` to `backend.hcl`
@@ -12,7 +11,7 @@
    ```hcl
     organization = "my-terraform-cloud-organization"
     workspaces {
-        name = "infra-service-project-dev"
+        name = "application-dev"
     }
     ```
 1. `terraform init -backend-config backend.hcl`

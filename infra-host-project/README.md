@@ -1,6 +1,6 @@
 # Preconditions
-1. Have workspaces created
-1. Have variables set in the workspace
+1. Workspace created
+1. Variables set in the workspace
 1. Add through UI `org_id` and `billing_account_id` to workspace variables.
 1. Optional: Add through UI `parent_folder` variable.
 
