@@ -34,7 +34,7 @@ def get_token():
         raise Exception(error_message)
 
 
-def create_workspace(name, org, token, working_directory='', oauth_token_id=None, vcs_repo={}):
+def create_workspace(name, org, token, working_directory='', trigger_prefixes=[], oauth_token_id=None, vcs_repo={}):
     url = 'https://app.terraform.io/api/v2/organizations/{}/workspaces'.format(org)
     if oauth_token_id and "identifier" in vcs_repo:
         vcs_repo["oauth-token-id"] = oauth_token_id
@@ -47,6 +47,7 @@ def create_workspace(name, org, token, working_directory='', oauth_token_id=None
                 "name": name,
                 "working-directory": working_directory,
                 "queue-all-runs": True,
+                "trigger-prefixes": trigger_prefixes,
                 "vcs-repo": vcs_repo
             },
             "type": "workspaces"
@@ -84,9 +85,17 @@ if __name__ == '__main__':
         print('Creating/Modifying {}'.format(workspace['name']))
         working_directory = ''
         vcs_repo = {}
-        if 'working_directory' in workspace:
-            working_directory = workspace['working_directory']
-        if 'vcs_repo' in workspace:
-            vcs_repo = workspace['vcs_repo']
-        create_workspace(workspace['name'], org, token, working_directory=working_directory,
-                         oauth_token_id=oauth_token_id, vcs_repo=vcs_repo)
+        trigger_prefixes = []
+        if 'working-directory' in workspace:
+            working_directory = workspace['working-directory']
+        if 'trigger-prefixes' in workspace:
+            trigger_prefixes = workspace['trigger-prefixes']
+        if 'vcs-repo' in workspace:
+            vcs_repo = workspace['vcs-repo']
+        create_workspace(workspace['name'],
+                         org,
+                         token,
+                         working_directory=working_directory,
+                         trigger_prefixes=trigger_prefixes,
+                         oauth_token_id=oauth_token_id,
+                         vcs_repo=vcs_repo)
