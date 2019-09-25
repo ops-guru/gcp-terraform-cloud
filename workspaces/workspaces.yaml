@@ -41,3 +41,15 @@
   working_directory: "security"
 
 - name: application-dev
+- name: application-stg
+  vcs_repo:
+    identifier: "ops-guru/gcp-terraform-cloud"
+    ingress-submodules: true
+    branch: "master"
+  working_directory: "application"
+- name: application-prd
+  vcs_repo:
+    identifier: "ops-guru/gcp-terraform-cloud"
+    ingress-submodules: true
+    branch: "master"
+  working_directory: "application"
