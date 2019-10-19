@@ -77,8 +77,8 @@ committed to a git repo.
 1. Go to your terraform cloud UI.
 1. Manually add the following variables in infra-host-project-dev, infra-host-project-stg, infra-host-project-prd, 
 infra-service-project-dev, infra-service-project-stg, infra-service-project-prd:
-   * org_id = <your gcp organization ID>
-   * billing_account_id = <your organization billing account id>
+   * org_id = `your gcp organization ID`
+   * billing_account_id = `your organization billing account id`
    
 ## 3. Deploy dev environment
 Dev environment is meant for terraform code development. Workspaces for dev environment are not connected to VCS though
@@ -110,32 +110,6 @@ they can be if you want. (modify workspaces/workspaces.yaml if you want this fea
    1. `terraform init -backend-config backend.hcl`
    1. `terraform plan`
    1. `terraform apply`
-1. Deploy infra-service-project
-   1. `cd infra-service-project`
-   1. `cp backend.hcl.example backend.hcl`
-   1. Modify `backend.hcl` with proper information
-   ```hcl
-    organization = "<my-terraform-cloud-organization>"
-    workspaces {
-        name = "infra-service-project-dev"
-    }
-   ```
-   1. `terraform init -backend-config backend.hcl`
-   1. `terraform plan`
-   1. `terraform apply`
-1. Deploy security
-   1. `cd security`
-   1. `cp backend.hcl.example backend.hcl`
-   1. Modify `backend.hcl` with proper information
-   ```hcl
-    organization = "<my-terraform-cloud-organization>"
-    workspaces {
-        name = "security-dev"
-    }
-   ```
-   1. `terraform init -backend-config backend.hcl`
-   1. `terraform plan`
-   1. `terraform apply`
 1. Deploy security
    1. `cd security`
    1. `cp backend.hcl.example backend.hcl`
@@ -156,7 +130,7 @@ they can be if you want. (modify workspaces/workspaces.yaml if you want this fea
    ```hcl
     organization = "<my-terraform-cloud-organization>"
     workspaces {
-        name = "application-dev"
+        name = "application-us-central1-dev"
     }
    ```
    1. `terraform init -backend-config backend.hcl`

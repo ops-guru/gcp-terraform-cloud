@@ -1,4 +1,4 @@
 organization = "Your terraform cloud org"
 workspaces {
-  name = "application-dev"
+  name = "application-us-central1-dev"
 }
