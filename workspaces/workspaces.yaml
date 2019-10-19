@@ -9,7 +9,7 @@
   vcs-repo:
     identifier: "ops-guru/gcp-terraform-cloud"
     ingress-submodules: true
-    branch: "master"
+    branch: "v0.1.0"
   working-directory: "infra-host-project"
 
 - name: infra-service-project-dev
@@ -23,7 +23,7 @@
   vcs-repo:
     identifier: "ops-guru/gcp-terraform-cloud"
     ingress-submodules: true
-    branch: "master"
+    branch: "v0.1.0"
   working-directory: "infra-service-project"
 
 - name: security-dev
@@ -37,7 +37,7 @@
   vcs-repo:
     identifier: "ops-guru/gcp-terraform-cloud"
     ingress-submodules: true
-    branch: "master"
+    branch: "v0.1.0"
   working-directory: "security"
 
 - name: application-us-central1-dev
@@ -55,5 +55,5 @@
   vcs-repo:
     identifier: "ops-guru/gcp-terraform-cloud"
     ingress-submodules: true
-    branch: "master"
+    branch: "v0.1.0"
   working-directory: "application"
