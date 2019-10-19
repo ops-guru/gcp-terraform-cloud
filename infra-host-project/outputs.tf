@@ -67,3 +67,5 @@ output "router_name" {
   description = "Cloud NAT router name"
   value = module.cloud-nat.router_name
 }
+
+output "demo" { value = "I like clouds" }
