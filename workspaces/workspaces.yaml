@@ -40,18 +40,18 @@
     branch: "master"
   working-directory: "security"
 
-- name: application-dev
+- name: application-us-central1-dev
   working-directory: "application"
   trigger-prefixes:
     - "modules/gke"
     - "modules/gke-bastion"
-- name: application-stg
+- name: application-us-central1-stg
   vcs-repo:
     identifier: "ops-guru/gcp-terraform-cloud"
     ingress-submodules: true
     branch: "master"
   working-directory: "application"
-- name: application-prd
+- name: application-us-central1-prd
   vcs-repo:
     identifier: "ops-guru/gcp-terraform-cloud"
     ingress-submodules: true
