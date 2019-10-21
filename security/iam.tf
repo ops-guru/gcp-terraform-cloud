@@ -7,6 +7,9 @@ locals {
   gke_cluster = [
     "roles/storage.objectCreator",
     "roles/storage.objectViewer",
+    "roles/logging.logWriter",
+    "roles/monitoring.metricWriter",
+    "roles/monitoring.viewer",
   ]
 }
 
