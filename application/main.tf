@@ -10,6 +10,7 @@ module "gke" {
   master_ipv4_cidr_block = "10.0.1.0/28"
   region = var.region
   identity_namespace = "${data.terraform_remote_state.infra-host-project.outputs.project_id}.svc.id.goog"
+  node_metadata = "GKE_METADATA_SERVER"
   master_authorized_networks_config = [{
     cidr_blocks = [{
       cidr_block = data.terraform_remote_state.infra-host-project.outputs.subnets_ips[0]

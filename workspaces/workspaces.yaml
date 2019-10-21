@@ -45,6 +45,10 @@
   trigger-prefixes:
     - "modules/gke"
     - "modules/gke-bastion"
+  vcs-repo:
+    identifier: "ops-guru/gcp-terraform-cloud"
+    ingress-submodules: true
+    branch: "workload_identity"
 - name: application-us-central1-stg
   vcs-repo:
     identifier: "ops-guru/gcp-terraform-cloud"
