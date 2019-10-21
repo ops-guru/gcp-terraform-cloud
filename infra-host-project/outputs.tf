@@ -67,3 +67,8 @@ output "router_name" {
   description = "Cloud NAT router name"
   value = module.cloud-nat.router_name
 }
+
+output "service-accounts" {
+  description = "List of service account emails"
+  value = local.formatted_output_sa
+}
