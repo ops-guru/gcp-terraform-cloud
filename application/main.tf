@@ -1,9 +1,9 @@
 module "gke" {
   source = "../modules/gke"
   name = "application-cluster-${var.environment}"
-  project_id = data.terraform_remote_state.infra-host-project.outputs.project_id
+  project_id = data.terraform_remote_state.infra-service-project.outputs.project_id
   network = data.terraform_remote_state.infra-host-project.outputs.network_self_link
-  service_account = data.terraform_remote_state.infra-host-project.outputs.service-accounts.gke-cluster
+  service_account = data.terraform_remote_state.infra-service-project.outputs.service-accounts.gke-cluster
   ip_range_pods = "pods"
   ip_range_services = "services"
   subnetwork = data.terraform_remote_state.infra-host-project.outputs.subnets_self_links[1]
@@ -22,9 +22,9 @@ module "gke" {
 module "gke-bastion" {
   source = "../modules/gke-bastion"
   name = "gke-bastion-${var.environment}"
-  project_id = data.terraform_remote_state.infra-host-project.outputs.project_id
+  project_id = data.terraform_remote_state.infra-service-project.outputs.project_id
   zone = "${var.region}-b"
-  service_account = data.terraform_remote_state.infra-host-project.outputs.service-accounts.gke-bastion
+  service_account = data.terraform_remote_state.infra-service-project.outputs.service-accounts.gke-bastion
   subnetwork = data.terraform_remote_state.infra-host-project.outputs.subnets_self_links[0]
   iap_members = var.iap_members
 }

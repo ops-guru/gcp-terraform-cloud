@@ -15,15 +15,15 @@ locals {
 
 resource "google_project_iam_member" "gke_bastion" {
   count = length(local.gke_bastion)
-  project = data.terraform_remote_state.infra-host-project.outputs.project_id
-  member = "serviceAccount:${data.terraform_remote_state.infra-host-project.outputs.service-accounts.gke-bastion}"
+  project = data.terraform_remote_state.infra-service-project.outputs.project_id
+  member = "serviceAccount:${data.terraform_remote_state.infra-service-project.outputs.service-accounts.gke-bastion}"
   role = local.gke_bastion[count.index]
 }
 
 resource "google_project_iam_member" "gke_cluster" {
   count = length(local.gke_cluster)
-  project = data.terraform_remote_state.infra-host-project.outputs.project_id
-  member = "serviceAccount:${data.terraform_remote_state.infra-host-project.outputs.service-accounts.gke-cluster}"
+  project = data.terraform_remote_state.infra-service-project.outputs.project_id
+  member = "serviceAccount:${data.terraform_remote_state.infra-service-project.outputs.service-accounts.gke-cluster}"
   role = local.gke_cluster[count.index]
 }
 

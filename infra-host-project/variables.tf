@@ -32,16 +32,3 @@ variable "secondary_ranges" {
 variable "cloud_nat_region" {
   description = "Region where cloud nat router will be deployed. Should be the same regions as your subnetworks"
 }
-
-variable "service_accounts" {
-  description = "List of service accounts to create"
-  type = list(string)
-  default = [
-    "kafka",
-    "rabbitmq",
-    "gke-cluster",
-    "gke-bastion",
-    "terraform",
-    "mysql",
-  ]
-}
