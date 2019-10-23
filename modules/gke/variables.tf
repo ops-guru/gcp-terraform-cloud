@@ -249,7 +249,8 @@ variable "node_pools_oauth_scopes" {
   type        = map(any)
   default = {
     all = [
-      "https://www.googleapis.com/auth/cloud-platform"
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/service.management.readonly",
     ]
     microservices = []
   }
